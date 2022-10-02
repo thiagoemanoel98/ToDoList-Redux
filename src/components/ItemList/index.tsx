@@ -1,14 +1,28 @@
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
+import {useDispatch} from 'react-redux';
+import {deleteTask} from '../../redux/tasksSlice';
 
 interface Props {
   name: string;
   id: string;
+  isCompleted: boolean;
 }
 
 export const ItemList: React.FC<Props> = props => {
+  const dispatch = useDispatch();
+
+  function handleDelete() {
+    dispatch(deleteTask({id: props.id}));
+  }
+
   return (
-    <TouchableOpacity style={styles.Container}>
+    <TouchableOpacity
+      style={styles.Container}
+      onLongPress={() => {
+        handleDelete();
+      }}
+      delayLongPress={500}>
       <Text style={styles.TaskName}>{props.name}</Text>
     </TouchableOpacity>
   );

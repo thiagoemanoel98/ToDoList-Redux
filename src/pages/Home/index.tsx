@@ -21,10 +21,13 @@ interface ITask {
   isCompleted: boolean;
 }
 
+
+
 export function Home() {
   const dispatch = useDispatch();
   const [nameTask, setNameTask] = React.useState('');
 
+  
   const myTasks = useSelector((state: ITaskState) => {
     return state.tasks;
   });
@@ -57,7 +60,7 @@ export function Home() {
           style={styles.input}
           onChangeText={setNameTask}
           value={nameTask}
-          placeholder="useless placeholder"
+          placeholder="Nova tarefa"
         />
         <TouchableOpacity onPress={handleAddTask}>
           <Text style={styles.TextButton}>Adicionar</Text>
@@ -106,7 +109,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '10%',
+    paddingTop: 8,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     backgroundColor: '#2982b3',

@@ -13,6 +13,7 @@ import {SafeAreaView, StatusBar} from 'react-native';
 import {Home} from './src/pages/Home';
 import {Provider} from 'react-redux';
 import {store} from './src/redux/store';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 // https://dev.to/arunavamodak/make-a-simple-todo-app-using-react-and-reduxtoolkit-2d4i
 // https://javascript.plainenglish.io/how-to-build-a-simple-todo-app-in-react-native-using-redux-toolkit-eb9ca5409a1d
@@ -22,7 +23,9 @@ const App = () => {
     <SafeAreaView style={{backgroundColor: '#fff', flex: 1}}>
       <StatusBar barStyle={'light-content'} />
       <Provider store={store}>
-        <Home />
+        <GestureHandlerRootView style={{flex: 1}}>
+          <Home />
+        </GestureHandlerRootView>
       </Provider>
     </SafeAreaView>
   );
